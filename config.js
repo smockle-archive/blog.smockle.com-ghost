@@ -28,13 +28,9 @@ config = {
         },
 
         database: {
-            client: "postgres",
+            client: "sqlite3",
             connection: {
-                host: process.env.POSTGRES_HOST,
-                user: process.env.POSTGRES_USER,
-                password: process.env.POSTGRES_PASS,
-                database: process.env.POSTGRES_DB,
-                port: process.env.POSTGRES_PORT
+                filename: path.join(process.env.GHOST_CONTENT, "/data/ghost.db")
             }
         },
 
@@ -43,6 +39,10 @@ config = {
             host: "0.0.0.0",
             // Port to be passed to node's `net.Server#listen()`, for iisnode set this to `process.env.PORT`
             port: "2368"
+        },
+
+        paths: {
+            contentPath: path.join(process.env.GHOST_CONTENT, "/")
         },
 
         storage: {
